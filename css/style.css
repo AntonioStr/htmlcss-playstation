@@ -1,0 +1,512 @@
+/* commons */
+.ms_flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ms_link {
+    color: black;
+    text-decoration: none;
+}
+.ms_link:hover {
+    color: rgb(0,112,209);
+}
+.ms_btn {
+    border: 2px solid transparent;
+    display: inline-block;
+    border-radius: 2rem;
+    padding: 2px;
+    transition: .2s;
+}
+.ms_btn-round {
+    border-radius: 2rem;
+    transition: .2s;
+    padding: 2px 13px;
+}
+.ms_h2 {
+    font-size: 2.25rem;
+    font-weight: 200;
+}
+.ms_h3 {
+    font-size: 2rem;
+    font-weight: 200;
+}
+.ms_h4 {
+    font-size: .75rem;
+}
+@media screen and (min-width: 768px) {
+    
+    .ms_h2 {
+        font-size: 2.5rem;
+    }
+    .ms_h3 {
+        font-size: 2rem;
+    }
+    .ms_h4 {
+        font-size: .75rem;
+    }
+}
+.ms_card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
+    opacity: .8;
+}
+.ms_card img {
+    width: 100%;
+}
+.ms_big-bg-image {
+    height: 500px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.ms_gradient {
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9));
+    opacity: .3;
+    transition: .3s;
+}
+.ms_moving-text {
+    transform: translateY(25px);
+    opacity: 0;
+    transition: transform 1.5s, opacity .6s;
+}
+.ms_moving-logo {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 1s, opacity .6s;
+}
+header:hover~main #jumbotron .ms_moving-text,
+#jumbotron:hover .ms_moving-text,
+#game-adv:hover .ms_moving-text {
+    transform: translateY(0);
+    opacity: 1;
+}
+header:hover~main #jumbotron .ms_moving-logo,
+#jumbotron:hover .ms_moving-logo,
+#game-adv:hover .ms_moving-logo {
+    transform: translateY(0);
+    opacity: 1;
+}
+header:hover~main #jumbotron .ms_gradient,
+#jumbotron:hover .ms_gradient,
+#game-adv:hover .ms_gradient {
+    opacity: 1;
+}
+
+
+
+/* header */
+header {
+    display: unset;
+}
+/* top */
+#logo-sony {
+    cursor: pointer;
+}
+#logo-sony img {
+    width: 75px;
+}
+/* bottom */
+#header-bottom {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+/* tolti i bordi di bootstrap intorno ai buttons on focus */
+#menu-btn:focus,
+#login-btn:focus,
+.ms_btn-round:focus {
+    box-shadow: none;
+}
+
+/* Soluzione trovata su stackoverflow per cambiare l'icona al menu in responsive */
+#menu-btn .ms_menu-icon {
+    display: block;
+    background-color: #000;
+    height: 3px;
+    width: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    left: 0;
+    opacity: 1;
+    transition: all 0.25s ease-out;
+    transform-origin: center left;
+}
+#menu-btn .ms_menu-icon:nth-child(1) {
+    margin-top: 0.3em;
+}
+#menu-btn:not(.collapsed) .ms_menu-icon:nth-child(1) {
+    transform: translate(15%, -33%) rotate(45deg);
+}
+#menu-btn:not(.collapsed) .ms_menu-icon:nth-child(2) {
+    opacity: 0;
+}
+#menu-btn:not(.collapsed) .ms_menu-icon:nth-child(3) {
+    transform: translate(15%, 33%) rotate(-45deg) ;
+}
+#menu-btn .ms_menu-icon:nth-child(1) {
+    transform: translate(0%, 0%) rotate(0deg) ;
+}
+#menu-btn .ms_menu-icon:nth-child(2) {
+    opacity: 1;
+}
+#menu-btn .ms_menu-icon:nth-child(3) {
+    transform: translate(0%, 0%) rotate(0deg) ;
+}
+/* fine icona menu */
+
+#login-btn:hover {
+    opacity: .8;
+}
+.ms_nav-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: .8rem;
+}
+.ms_nav-toggle:hover,
+.ms_nav-toggle:focus {
+    color: rgb(0,112,209);
+}
+.ms_nav-toggle::after {
+    margin: 5px;
+    width: 10px;
+    height: 10px;
+    content: '';
+    background-image: url(../img/chevron-down-solid.svg);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+}
+.ms_nav-toggle:hover::after {
+    background-image: url(../img/chevron-down-solid-hover.svg);
+}
+.ms_nav-toggle:focus::after {
+    transform: rotate(180deg);
+}
+/* dropdown menu */
+.ms_dropdown {
+    list-style: none;
+    border: none;
+    box-shadow: 0 .6rem .3rem rgba(0,0,0,0.3);
+    position: absolute !important;
+    width: calc(100vw - (100vw - 100%));
+    top: 100%;
+    left: 0;
+    border-radius: 0;
+}
+.ms_dropdown li {
+    list-style: none;
+}
+.ms_dropdown-item {
+    font-size: .9rem;
+    border-radius: .3rem;
+    width: 120px;
+    margin: 0 10px;
+    text-align: center;
+}
+.ms_dropdown-item img {
+    width: 4rem;
+}
+.ms_dropdown-item a {
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: .5rem;
+}
+.ms_dropdown-item:hover {
+    box-shadow: 0 0 .5rem rgba(0,0,0,0.3);
+}
+.dropdown-bottom li {
+    list-style: disc;
+    color: rgb(0,112,209);
+    margin: .75rem 1.25rem;
+}
+/* dropdown menu mobile */
+@media screen and (max-width: 992px) {
+    .ms_navbar {
+        padding-top: 1.5rem;
+        box-shadow: inset 0 .25rem .25rem rgba(0,0,0,0.2);
+        min-height: calc(100vh - 60px);
+    }
+    .ms_nav-toggle {
+        width: 100%;
+        padding: 10px 15px;
+    }
+    .ms_dropdown {
+        width: 70% !important;
+        height: calc(100vh - 60px);
+        top: 60px !important;
+        left: 30% !important;
+        padding-top: 20px;
+        background: linear-gradient(rgba(255,255,255,0), white 90%);
+    }
+    .ms_menu {
+        height: 100%;
+        overflow-y: auto;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        background: white;
+    }
+    .dropdown-top {
+        justify-content: space-around !important;
+    }
+    .ms_dropdown-item {
+        width: 40%;
+        margin-bottom: 1rem;
+    }
+    .dropdown-bottom {
+        display: block;
+        padding-left: 0;
+    }
+    .dropdown-bottom li {
+        list-style: none;
+    }
+}
+#search-btn {
+    width: 25px;
+    cursor: pointer;
+}
+
+
+/* main */
+
+/* jumbo */
+#jumbotron .ms_big-bg-image {
+    background-image: url(../img/jumbo-bg.png);
+    margin-bottom: 20px;
+    padding-top: 200px;
+}
+#jumbotron button {
+    background: rgb(205,61,16);
+}
+#jumbotron .ms_btn:hover {
+    border: 2px solid rgb(205,61,16);
+}
+#jumbotron .ms_card {
+    border-radius: 1rem;
+    opacity: 1;
+}
+#jumbotron .ms_card img {
+    border-radius: 1.5rem;
+    cursor: pointer;
+    opacity: .7;
+    transition: .2s;
+}
+#jumbotron .ms_card:first-child img {
+    border: 2px solid rgb(0,112,209);
+    padding: 3px;
+    opacity: 1;
+}
+#jumbotron .ms_card img:hover {
+    transform: translateY(-1rem);
+    box-shadow: 0 1rem .4rem rgba(0,0,0,0.3);
+    opacity: 1;
+}
+
+/* playstation 5 */
+#ps5 {
+    overflow: hidden;
+}
+#ps5 h4 {
+    color: rgb(0,112,209);
+}
+#ps5 p {
+    color: rgb(99,99,99);
+    padding: 20px 0;
+}
+#ps5 .ms_btn-round{
+    background: rgb(44,100,230);
+}
+#ps5 .ms_btn:hover {
+    border: 2px solid rgb(44,100,230);
+}
+#ps5 .ms_gallery {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+}
+#ps5 .ms_gallery::-webkit-scrollbar {
+    background: white;
+    height: 5px;
+    width: 5px;
+}
+#ps5 .ms_gallery::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 2.5px;
+}
+#ps5 .ms_gallery:hover::-webkit-scrollbar-thumb {
+    background: rgb(44,100,230);
+}
+#ps5 .ms_card {
+    max-width: 200px;
+    min-width: 100px;
+    border-radius: .75rem;
+    border: 2px solid white;
+    padding: 0 10px;
+    transition: .2s;
+    margin: 2px;
+    margin-bottom: 10px;
+}
+#ps5 .ms_card:first-child {
+    opacity: 1;
+    border: 2px solid rgb(44,100,230);
+}
+#ps5 .ms_card img{
+    max-width: 120px;
+    margin: 10px;
+}
+#ps5 .ms_card:hover {
+    opacity: 1;
+    border: 2px solid rgb(44,100,230);
+}
+
+/* game adv */
+#game-adv.ms_big-bg-image {
+    background-image: url(../img/it-takes-two-hero-banner-desktop.jpg);
+    padding-top: 50px;
+}
+#game-adv button {
+    background: rgb(205,61,16);
+}
+#game-adv .ms_btn:hover {
+    border: 2px solid rgb(205,61,16);
+}
+
+/* #nuove uscite */
+#new-games {
+    background: black;
+}
+#new-games .ms_card {
+    border-radius: 1rem;
+    opacity: 1;
+    transition: .2s;
+}
+#new-games .ms_card img {
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+#new-games .ms_card:hover {
+    transform: scale(1.01);
+}
+
+/* playstation 4 */
+#ps4 img {
+    width: 100%;
+}
+#ps4 .ms_btn-round {
+    background: rgb(44,100,230);
+}
+#ps4 .ms_btn:hover {
+    border: 2px solid rgb(44,100,230);
+}
+#ps4 p {
+    color: rgb(99,99,99);
+}
+#ps4 .ms_section-title p {
+    padding: 20px 0;
+}
+
+/* playstation plus */
+#psplus {
+    background: rgb(193,189,188);
+}
+#psplus .ms_btn-round {
+    color: rgb(44,100,230);
+    background: rgb(218,219,220);
+}
+#psplus .ms_btn:hover {
+    border: 2px solid rgb(218,219,220);
+}
+#psplus p {
+    padding: 30px 0 10px;
+}
+
+/* deals */
+#deals p {
+    color: rgb(99,99,99);
+    padding: 20px 0;
+}
+#deals img {
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.3);
+    border-radius: 1rem;
+}
+#deals img:hover {
+    transform: scale(1.02);
+}
+
+/* playstation now */
+#psnow {
+    background: rgb(10,20,50);
+}
+#psnow .ms_btn-round {
+    background: white;
+}
+#psnow .ms_btn:hover {
+    border: 2px solid white;
+}
+#psnow p {
+    padding: 30px 0 10px;
+    color: white;
+}
+
+/* social */
+#social img {
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.4);
+    border-radius: 1rem;
+}
+#social img:hover {
+    transform: scale(1.02);
+}
+
+
+/* footer */
+
+footer {
+    background: rgb(0,67,156);
+    font-size: .75rem;
+}
+footer ul {
+    list-style: none;
+}
+footer li {
+    padding: 3px 0;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+footer a:hover {
+    color: rgba(255,255,255,0.8);
+}
+#language {
+    cursor: pointer;
+}
+#language img {
+    width: 20px;
+    margin-right: 5px;
+}
+#footer-bottom img {
+    width: 120px;
+}
+#footer-bottom a {
+    text-decoration: underline;
+}
